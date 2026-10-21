@@ -18,5 +18,4 @@ Live site: https://hayosoai.github.io/zackary-loevseth-portfolio/
 - `git ls-files --error-unmatch .nojekyll index.html styles.css script.js && test "$(git ls-files | wc -l)" -eq 4` — passed before this README was added; confirmed the four existing source files.
 - `node --check script.js` — passed.
 - `git diff --check` and `git diff --cached --check` — passed.
-- The live site could not be inspected from this environment: the request failed because `hayosoai.github.io` could not be resolved.
 - The tracked repository has no build or test configuration, so no automated build or test suite is available here.
