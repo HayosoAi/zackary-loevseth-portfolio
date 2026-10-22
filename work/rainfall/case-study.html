@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An offline rainfall explorer: dated accumulation windows, explicit reference choices and inspectable missing-data assumptions.">
+  <meta name="theme-color" content="#f2f0e9">
+  <title>Rainfall, in context — case study</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    .case-header{position:sticky;top:0}
+    .case-main{padding-block:clamp(3rem,7vw,7rem);max-width:78ch}
+    .case-main h1{font-size:clamp(2.6rem,7vw,5.8rem);max-width:13ch;margin-bottom:1.4rem}
+    .case-main h2{font-size:clamp(1.7rem,3.2vw,2.6rem);margin-top:3rem;scroll-margin-top:7rem}
+    .case-lead{font-size:1.2rem;color:var(--ink-soft);max-width:58ch}
+    .case-actions{display:flex;flex-wrap:wrap;gap:1rem 2rem;margin:1.8rem 0 2.5rem}
+    .case-main p,.case-main li{overflow-wrap:anywhere}
+    .case-main li{margin-block:.6rem}
+    .case-main details{margin-block:1.5rem;padding:1.1rem 1.3rem;border:1px solid #c7cec6;border-radius:var(--radius-sm)}
+    .case-main summary{cursor:pointer;font-weight:700;line-height:1.5}
+    .case-main details p:first-of-type{margin-top:1rem}
+    .case-main code{overflow-wrap:anywhere}
+    .case-main .source-list{padding-left:1.2rem}
+    .case-footer{padding-block:2rem;border-top:1px solid #c7cec6;color:var(--ink-soft)}
+    @media(max-width:600px){.case-header .brand-name{display:inline}}
+    @media print{.case-main{padding:0}.case-main details{break-inside:avoid}}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to case study</a>
+<header class="site-header case-header">
+  <div class="shell header-inner">
+    <a class="brand" href="../../#contributions"><span class="brand-mark" aria-hidden="true">ZL</span><span class="brand-name">Portfolio</span></a>
+    <nav class="site-nav" aria-label="Case study navigation"><a href="./">Explorer</a></nav>
+  </div>
+</header>
+<main class="shell case-main" id="main-content">
+  <p class="eyebrow">Geospatial analysis · Offline software</p>
+  <h1>Rainfall, in context</h1>
+  <p class="case-lead">Making the dates and assumptions behind a rainfall comparison visible.</p>
+  <p>This work sample turns a frozen NOAA station extract into an interactive explorer. Two panels compare accumulation windows against explicitly selected reference members. Charts, numerical tables and expandable details expose the dates, totals and completeness behind each result.</p>
+  <div class="case-actions"><a href="./">Open the explorer →</a><a href="#source">Inspect source and inputs ↓</a></div>
+
+  <h2 id="methods">Different dates can change the comparison.</h2>
+  <p>The opening view contrasts October–December 2024 with calendar 2024. The quarter totals 0.16 inches against a 5.414-inch mean for those quarters in 2019–2023, while the year totals 19.13 inches against a 16.45-inch mean for those years. Different accumulated dates explain their opposing directions. These are totals over different lengths, not rainfall rates.</p>
+  <p>Every requested target and reference member must be complete. The explorer retains all 20 declared choices, including one unavailable result. The two-year reference ending in 2019 needs January–June 2018, before this extract begins. Its selected mean remains unavailable; the four complete members do not silently replace the requested five. Choosing the existing 2020–2023 option changes the reference set rather than reconstructing absent rainfall.</p>
+  <p>The underlying extract has no internal date gaps or blank precipitation values. Reported zeros, including trace zeros, remain observations. Dates outside this extract are not demonstrated gaps in NOAA’s wider archive. A high coverage fraction cannot supply an unknown rainfall amount.</p>
+  <details><summary>Calculation choices</summary><p>All target windows end in December 2024. Reference years identify window endpoints: a 24-month member ending in 2023 spans January 2022–December 2023. The app converts inches to millimetres using 25.4 millimetres per inch without adding measurement precision. It uses a shared, zero-based scale for the two absolute-total charts. An incomplete requested reference makes its full mean and percentage unavailable; a zero denominator would make the percentage undefined.</p><p>The app embeds its frozen data and calculation logic. It needs no live data request, external library, account or model service. Inspectable build sources and selected input files accompany the export.</p></details>
+
+  <h2 id="synthetic-masks">Missing is different from zero.</h2>
+  <p>The explorer’s month-hiding control is a deliberately synthetic demonstration. A separate reproducible exercise withholds each of the 366 days of complete 2024 in turn. Every hypothetical copy retains more than 99% of annual dates, but its strict annual total remains unavailable.</p>
+  <p>Incorrectly replacing the withheld amount with zero reverses the annual comparison in two of those synthetic masks: the copies hiding February 4 or February 5. The complete known year is above the selected reference. These deterministic counterexamples concern an assumption about withheld observations; they are not observed missingness, error probabilities, climatology or tested production behavior.</p>
+  <p>The masking analysis uses retained records and nonnegativity when discussing an unknown amount. It does not treat the hidden truth, known annual total or information from another mask as observed input. Its assumed fills never enter the app’s primary rainfall series.</p>
+
+  <h2 id="validation">What the recorded checks cover</h2>
+  <p>The source work includes frozen input hashes, independent arithmetic checks and recorded interface review. R2 records narrow reflow, keyboard/focus/status behavior, forced-colors selection cues and UTF-8 delivery. Earlier R1 records actual 200% Chrome zoom; that is historical evidence, not a fresh zoom test of this export. Packaging checks for this selected export are described with its source files. This export was prepared with Codex assistance; recorded automated checks do not imply personal execution by the portfolio owner.</p>
+  <details><summary>Interpretation and validation limits</summary><p>Short selected references are not climate normals, and overlapping windows share observations. Station continuity, homogenization and the May 2024 handoff remain unresolved. Provider dates alone do not establish UTC bins when observation-time fields are blank. This is a descriptive work sample: it establishes no climate trend, forecast, new climate finding, wildfire cause, measured user impact or production status.</p><p>VoiceOver, other browsers and real mobile hardware remain untested. Recorded keyboard and layout checks do not establish broad accessibility conformance. Local checks of the selected export do not expand the scientific scope of the original analyses.</p></details>
+
+  <h2 id="source">Source, inputs and attribution</h2>
+  <p>Menne et al. (2012), GHCN-Daily Version 3, NOAA NCDC, <a href="https://doi.org/10.7289/V5D21VHZ">dataset DOI</a>; PRCP / USW00093134 / 2018-07-01–2024-12-31; accessed 21 October 2026. <a href="https://doi.org/10.1175/JTECH-D-11-00103.1">Dataset overview</a>. Independent analytical work, not an official NOAA product or endorsement.</p>
+  <p>The explorer preserves the exact public NOAA request, API/units, flags and station-history references in its <a href="index.html#methods-title">source notes</a>. A later provider response may differ from the frozen input; retrieval does not establish station continuity or a new current dataset version.</p>
+  <ul class="source-list">
+    <li><a href="README.txt">Export and reproduction instructions</a></li>
+    <li><a href="src/index.template.html" download="index.template.html">Download app template</a>, <a href="src/styles.css">styles</a>, <a href="src/engine.js">calculation engine</a> and <a href="src/app.js">interface source</a></li>
+    <li><a href="scripts/build.py">Dependency-free build script</a> and <a href="data/INPUTS.json">selected input provenance</a></li>
+    <li><a href="data/frozen-results.json">Frozen app results</a> and <a href="data/frozen-comparisons.csv">comparison table</a></li>
+    <li><a href="data/noaa-daily-current.csv">Frozen NOAA daily observations</a> and <a href="analysis/single-day-census/analyze_single_day_census.py">synthetic daily-mask analysis source</a></li>
+    <li><a href="analysis/single-day-census/results.json">Recorded synthetic daily-mask results</a></li>
+  </ul>
+  <p>No additional license for the original code, charts or prose is granted by this export. Source-data citations and terms remain separate.</p>
+</main>
+<footer class="shell case-footer"><a href="../../#contributions">← Back to selected work</a></footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "description": "Frozen NOAA-only inputs for the portable app build and synthetic daily-mask reproduction. No retrieval is made by the app or build.",
+  "files": [
+    {
+      "path": "data/frozen-results.json",
+      "bytes": 55065,
+      "sha256": "167c1ec6b7ec6f4826b27d04800b845ab781818cbb06766322a1f41fd98c550c"
+    },
+    {
+      "path": "data/frozen-comparisons.csv",
+      "bytes": 2487,
+      "sha256": "25428cb5144f3ab8e440b8412f55fcbdb484e4f7b884db1dcc1701490d2668ed"
+    },
+    {
+      "path": "data/noaa-daily-current.csv",
+      "bytes": 178307,
+      "sha256": "113a694665a7d1be8e66f02442d4aac6c32fc3f846f9ec903fe192b5c19a7fed"
+    }
+  ],
+  "source": {
+    "dataset": "Menne et al. (2012), GHCN-Daily Version 3, NOAA National Climatic Data Center",
+    "dataset_doi": "https://doi.org/10.7289/V5D21VHZ",
+    "overview_doi": "https://doi.org/10.1175/JTECH-D-11-00103.1",
+    "subset": "PRCP, USW00093134, 2018-07-01 through 2024-12-31",
+    "accessed": "2026-10-21",
+    "retrieval_completed_utc": "2026-10-21T14:58:21.292133+00:00",
+    "current_distribution_tag": null,
+    "source_policy": "https://www.ncei.noaa.gov/data-submission/data-licensing",
+    "scope": "Independent analytical work, not an official NOAA product or endorsement. Source policy is qualified; no blanket CC0 grant or station-specific rights warranty is asserted."
+  }
+}

@@ -334,8 +334,8 @@
               <h2 id="work-title">Evidence before adjectives.</h2>
             </div>
             <p>
-              Published security research, open-source patches, and an early-stage
-              evidence workflow—each linked to its source.
+              Published security research, open-source patches, and inspectable
+              analysis tools—each linked to its source.
             </p>
           </div>
 
@@ -477,6 +477,37 @@
                 <a href="https://github.com/HayosoAi/vesuvius-tifxyz-resampling" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
                 <a href="https://github.com/HayosoAi/vesuvius-tifxyz-resampling/blob/main/REVIEW_REPORT.md" target="_blank" rel="noopener noreferrer">Technical report <span aria-hidden="true">↗</span></a>
                 <a href="https://github.com/HayosoAi/vesuvius-tifxyz-resampling/blob/main/SCOPE.md" target="_blank" rel="noopener noreferrer">Evaluation scope <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+
+            <article class="project-card" data-reveal>
+              <div class="card-topline">
+                <span class="status status-published">Interactive work sample</span>
+                <span class="card-index" aria-hidden="true">06</span>
+              </div>
+              <p class="project-kicker">NOAA GHCN-Daily · Rainfall comparisons</p>
+              <h3>Rainfall, in context</h3>
+              <p class="project-summary">
+                An offline rainfall explorer that makes accumulation windows,
+                reference choices and missing-data assumptions inspectable.
+                Charts and numerical tables retain unavailable comparisons
+                instead of silently changing the selected reference.
+              </p>
+              <details class="project-notes">
+                <summary>Methods in brief</summary>
+                <div class="notes-body">
+                  <p>
+                    The explorer compares dated accumulation windows against
+                    selected reference members. It keeps a reference unavailable
+                    when required dates fall outside the frozen extract. A separate
+                    synthetic masking exercise tests the effect of replacing
+                    withheld rain with zero.
+                  </p>
+                </div>
+              </details>
+              <div class="card-links">
+                <a href="work/rainfall/">Explore rainfall <span aria-hidden="true">→</span></a>
+                <a href="work/rainfall/case-study.html">Case study <span aria-hidden="true">→</span></a>
               </div>
             </article>
           </div>

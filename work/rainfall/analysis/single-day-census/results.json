@@ -1,0 +1,79 @@
+{
+  "scope": "Deterministic enumeration of all 366 separate one-day masks in the complete 2024 record; no missingness probabilities or representative imputation claims",
+  "input": {
+    "path": "data/noaa-daily-current.csv",
+    "bytes": 178307,
+    "sha256": "113a694665a7d1be8e66f02442d4aac6c32fc3f846f9ec903fe192b5c19a7fed",
+    "extract_start": "2018-07-01",
+    "extract_end": "2024-12-31",
+    "supplied_dates": 2376,
+    "actual_in_extract_gaps": 0,
+    "actual_blank_prcp": 0
+  },
+  "known_complete_2024_total_in": "19.13",
+  "known_truth_direction": "above",
+  "known_truth_percent_difference_6dp": "16.291793",
+  "reference_annual_totals_in": {
+    "2019": "21.55",
+    "2020": "9.81",
+    "2021": "14.27",
+    "2022": "7.18",
+    "2023": "29.44"
+  },
+  "reference_mean_in": "16.45",
+  "known_truth_minus_reference_margin_in": "2.68",
+  "mask_count": 366,
+  "zero_fill_assumed_direction_counts": {
+    "above": 364,
+    "equal": 0,
+    "below": 2
+  },
+  "source_2024_numeric_zero_days": 330,
+  "source_2024_positive_days": 36,
+  "withheld_amount_at_or_above_margin": [
+    {
+      "date": "2024-02-04",
+      "known_withheld_in": "4.10",
+      "retained_partial_in": "15.03",
+      "zero_fill_assumed_direction": "below",
+      "zero_fill_assumed_percent_difference_6dp": "-8.632219",
+      "additional_nonnegative_amount_for_equality_in": "1.42"
+    },
+    {
+      "date": "2024-02-05",
+      "known_withheld_in": "2.93",
+      "retained_partial_in": "16.20",
+      "zero_fill_assumed_direction": "below",
+      "zero_fill_assumed_percent_difference_6dp": "-1.519757",
+      "additional_nonnegative_amount_for_equality_in": "0.25"
+    }
+  ],
+  "withheld_amount_exactly_equal_to_margin_count": 0,
+  "all_masked_strict_annual_totals_unavailable": true,
+  "retained_numeric_day_counts": [
+    365
+  ],
+  "strict_complete_month_counts": [
+    11
+  ],
+  "annual_numeric_coverage_percent": "99.726775956284153005464480874316939890710382513661",
+  "strict_complete_month_coverage_percent": "91.666666666666666666666666666666666666666666666667",
+  "all_pass_99_percent_annual_numeric_screen": true,
+  "identification_counts": {
+    "above": 364,
+    "not_identified_below_equal_above_possible": 2
+  },
+  "identification_information_set": "Retained rainfall values and nonnegativity only; deliberately excludes the known hidden value, known complete total, mask-selection metadata and cross-mask reconstruction",
+  "finite_upper_bound_from_that_information": null,
+  "old_suites_or_twelve_monthly_masks_rerun": false,
+  "script_sha256": "bf31f38f9390df1a2ced0c68975a9c23f5f0f5d3b9d37c51206d297354a84b3a",
+  "export_note": {
+    "kind": "sanitized recorded-result copy",
+    "changes": [
+      "input.path replaced with portable export-relative path",
+      "this explanatory export_note added"
+    ],
+    "script_sha256": "The top-level script_sha256 identifies the original recorded calculation script, not the portable-path adaptation.",
+    "numerical_fields": "unchanged from the recorded result"
+  }
+}

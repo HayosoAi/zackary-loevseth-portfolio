@@ -36,10 +36,15 @@ const trackedSections = navLinks
   .filter(Boolean);
 
 if ('IntersectionObserver' in window && trackedSections.length) {
+  const visibleSections = new Map();
   const sectionObserver = new IntersectionObserver(
     (entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
+      for (const entry of entries) {
+        if (entry.isIntersecting) visibleSections.set(entry.target, entry);
+        else visibleSections.delete(entry.target);
+      }
+
+      const visible = [...visibleSections.values()]
         .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
       if (!visible) return;
@@ -54,6 +59,8 @@ if ('IntersectionObserver' in window && trackedSections.length) {
   );
 
   trackedSections.forEach((section) => sectionObserver.observe(section));
+  const hero = document.querySelector('#top');
+  if (hero) sectionObserver.observe(hero);
 }
 
 document.querySelectorAll('details').forEach((details) => {
