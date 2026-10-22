@@ -168,133 +168,35 @@
       <section class="section independent-section" id="work" aria-labelledby="independent-title">
         <div class="shell independent-heading" data-reveal>
           <div>
-            <p class="eyebrow">Independent AI practice</p>
-            <h2 id="independent-title">Research that stays open to correction.</h2>
+            <p class="eyebrow">Independent research</p>
+            <h2 id="independent-title">Research with the evidence attached.</h2>
           </div>
           <p class="independent-intro">
-            I develop evaluation workflows that track evidence, test corrections,
-            and preserve the reasoning behind a result. My work combines versioned
-            fixtures, explicit scoring and resource budgets, and reproducible
-            research packages.
+            Public preprints and an interactive example make the reasoning
+            available for inspection.
           </p>
-        </div>
-
-        <div class="shell research-feature-grid">
-          <article class="research-feature-card research-feature-primary" aria-labelledby="correction-memory-title" data-reveal>
-            <div class="research-feature-topline">
-              <span class="status status-research">Working mathematical manuscript · October 2026</span>
-              <span class="card-index" aria-hidden="true">Research 01</span>
-            </div>
-            <p class="project-kicker">Epistemic Transition Integrity</p>
-            <h3 id="correction-memory-title">Correction-sufficient memory</h3>
-            <p>
-              I direct a research program on what a reasoning system needs
-              to retain to make justified corrections. The current work combines
-              finite-state proofs, counterexamples and exact-arithmetic reference
-              implementations for noisy evidence, sequential memory and changing
-              correction requirements.
-            </p>
-            <details class="project-notes research-notes">
-              <summary>Historical source record</summary>
-              <div class="notes-body">
-                <p>
-                  An earlier review described the 11 October ETI Extensions manuscript,
-                  source checkers and saved verification outputs. The exact source/checker
-                  bundle has not been recovered in the current audit.
-                </p>
-              </div>
-            </details>
-          </article>
-
-          <article class="research-feature-card research-feature-secondary" aria-labelledby="study-14-title" data-reveal>
-            <div class="research-feature-topline">
-              <span class="status status-research">Evaluation infrastructure · Comparative study in preparation</span>
-              <span class="card-index" aria-hidden="true">Research 02</span>
-            </div>
-            <p class="project-kicker">Study 14</p>
-            <h3 id="study-14-title">Controlled evaluation for corrective workflows</h3>
-            <p>
-              I developed a four-condition evaluation design for evidence use, correction
-              propagation and task completion in AI workflows. Its Python grader,
-              versioned fixtures and packet compiler support controlled testing with
-              explicit provenance, scoring and resource budgets.
-            </p>
-            <details class="project-notes research-notes">
-              <summary>Current state</summary>
-              <div class="notes-body">
-                <p>
-                  Comparative model runs and performance conclusions remain in preparation.
-                </p>
-              </div>
-            </details>
-          </article>
-        </div>
-
-        <div class="shell research-compact-grid">
-          <article class="research-compact-card relational-controller-card" aria-labelledby="relational-controller-title" data-reveal>
-            <div class="research-compact-topline">
-              <span class="status status-research">Synthetic prototype · saved test receipts</span>
-              <span class="card-index" aria-hidden="true">Research 03</span>
-            </div>
-            <p class="project-kicker">Relational controller</p>
-            <h3 id="relational-controller-title">Dependency-aware correction in a synthetic pipeline</h3>
-            <p>
-              I designed and directed a provider-free prototype that separates
-              observations, hypotheses, predictions and dependency-aware corrections.
-              Saved synthetic tests and an event trace document how the implementation
-              reopens an overgeneral hypothesis.
-            </p>
-            <details class="project-notes research-compact-notes">
-              <summary>Method and scope</summary>
-              <div class="notes-body">
-                <p>
-                  An October 7 development record documents implementation and testing.
-                  The invented
-                  <code>ToyShiftFixture</code> made no model or ARC calls; the saved receipt
-                  reports 36 passing tests and a 21-event trace. This is implementation
-                  evidence, not a comparative or performance result.
-                </p>
-              </div>
-            </details>
-          </article>
-
-          <aside class="research-compact-card research-method-card" aria-labelledby="reopening-pilot-title" data-reveal>
-            <div class="research-compact-topline">
-              <span class="status status-research">Research method · separate pilot</span>
-            </div>
-            <p class="project-kicker">Reopening pilot</p>
-            <h3 id="reopening-pilot-title">A null result kept visible.</h3>
-            <p>
-              A separate reopening pilot preserved a negative result rather than turning
-              it into a success claim.
-            </p>
-            <details class="project-notes research-compact-notes">
-              <summary>Pilot outcome</summary>
-              <div class="notes-body">
-                <p>
-                  Across 48 fresh-context runs, the receiver returned <code>UNKNOWN</code>
-                  46 times and two incorrect <code>KEEP</code> answers; no tested
-                  representation exceeded a constant-<code>UNKNOWN</code> policy within
-                  its information condition. This one-sample-per-cell pilot is separate
-                  from Study 14 and is not a model benchmark.
-                </p>
-              </div>
-            </details>
-          </aside>
         </div>
 
         <div class="shell research-verification" data-reveal>
           <div class="research-verification-copy">
-            <p class="eyebrow">Research &amp; verification</p>
-            <h3 id="verification-title">From an explicit target to a reproducible handoff.</h3>
+            <p class="eyebrow">Interactive demonstration</p>
+            <h3 id="reopening-pilot-title">Correction after a handoff.</h3>
             <p>
-              I designed and directed a research workflow that carries a project from an
-              explicit target through proof review, exact computation and reproducible
-              handoff. Its versioned records preserve corrections, rejected results and
-              the evidence supporting each release. Astra assisted with recent ETI research
-              and critical review of the evidence and verification methods. Codex
-              assisted with EvidenceDesk implementation.
+              A deterministic example shows how two records can share a compressed
+              decision but require different responses when the same premises change.
             </p>
+            <details class="project-notes research-compact-notes">
+              <summary>How the example works</summary>
+              <div class="notes-body">
+                <p>
+                  Two fictional rules preserve different arrangements of supporting
+                  reasons. Withdrawing the same premises changes their decisions
+                  differently. This constructed example illustrates information loss
+                  in a handoff; it does not measure language-model performance.
+                </p>
+              </div>
+            </details>
+            <a class="button button-outline" href="https://hayosoai.github.io/research-portfolio/hayosoai/reopening.html" target="_blank" rel="noopener noreferrer">Try the demonstration <span aria-hidden="true">↗</span></a>
           </div>
 
           <details class="preprint-panel">
@@ -373,8 +275,7 @@
                 included in KeeperHub v3.2.0.
               </p>
               <p class="scope-note">
-                Yoh5 authored the original diagnosis and accepted plan. Release inclusion
-                is documented in the upstream v3.2.0 notes.
+                Built on Yoh5’s original diagnosis and accepted plan.
               </p>
               <details class="project-notes">
                 <summary>Contribution notes</summary>
@@ -395,7 +296,7 @@
 
             <article class="project-card" data-reveal>
               <div class="card-topline">
-                <span class="status status-open">Open · Maintainer acknowledged</span>
+                <span class="status status-open">Patch contribution</span>
                 <span class="card-index" aria-hidden="true">03</span>
               </div>
               <p class="project-kicker">LibTIFF · Merge request !946</p>
@@ -405,17 +306,14 @@
                 TIFF handle-aware allocators, together with a dedicated unit test.
               </p>
               <p class="scope-note">
-                Open and unmerged when checked 19 October 2026. Maintainer Su Laus
-                later adapted the approach in a separate merge request and publicly
-                thanked Zack.
+                Maintainer Su Laus adapted the approach in MR !992 and credited Zack.
               </p>
               <details class="project-notes">
                 <summary>Contribution notes</summary>
                 <div class="notes-body">
                   <p>
-                    The maintainer-authored !992 adapts the approach; its
-                    <code>test_open_options</code> tests come from another contributor’s
-                    !975.
+                    The <code>test_open_options</code> tests in the maintainer’s
+                    MR !992 came from the separate test contribution in MR !975.
                   </p>
                 </div>
               </details>
@@ -427,30 +325,20 @@
 
             <article class="project-card project-card-dark" data-reveal>
               <div class="card-topline">
-                <span class="status status-prototype">Early-stage public prototype</span>
+                <span class="status status-prototype">Public prototype</span>
                 <span class="card-index" aria-hidden="true">04</span>
               </div>
               <p class="project-kicker">EvidenceDesk · Strands + local Ollama/Qwen</p>
               <h3>A research handoff that keeps the evidence attached</h3>
               <p class="project-summary">
-                I designed and directed a local workflow for source snapshots,
-                exact-quotation checks, unresolved questions, and separately
-                attributed review-packet export.
+                I designed and directed a local research workflow that captures
+                source snapshots, checks exact textual matches and exports
+                attributed review packets.
               </p>
               <p class="scope-note">
-                Early-stage prototype. Exact-quotation checks confirm
-                textual matches, not interpretation; the 7 September 2026 demo is a
-                historical walkthrough rather than a benchmark.
+                Text matching supports quotation checks; interpretation remains
+                a reviewer’s task.
               </p>
-              <details class="project-notes">
-                <summary>Project documentation</summary>
-                <div class="notes-body">
-                  <p>
-                    The public repository records the local workflow and its
-                    review-packet handoff.
-                  </p>
-                </div>
-              </details>
               <div class="card-links">
                 <a href="https://github.com/HayosoAi/evidencedesk-strands" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
               </div>
@@ -464,14 +352,13 @@
               <p class="project-kicker">Vesuvius · TIFXYZ resampling</p>
               <h3>Checking coordinate-resampling validity</h3>
               <p class="project-summary">
-                I developed a reproducible evaluation and correction for
-                coordinate-resampling validity using three public scroll-surface
-                patches, with regression tests, source-data checksums and explicit
-                scope limits.
+                I evaluated and corrected coordinate-resampling validity on three
+                public surface patches from one scroll, with regression tests and
+                source-data checksums.
               </p>
               <p class="scope-note">
-                Direct API geometry evaluation on one scroll; upstream adoption and
-                ink recognition are outside the demonstrated result.
+                The report covers direct API geometry checks, separate from
+                ink recognition and upstream integration.
               </p>
               <div class="card-links">
                 <a href="https://github.com/HayosoAi/vesuvius-tifxyz-resampling" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
@@ -568,8 +455,8 @@
                   </p>
                 </details>
                 <p class="scope-note">
-                  Published as historical coursework using credited source datasets;
-                  it is not current legal-ownership guidance.
+                  The maps show historical land-ownership data, with source
+                  datasets credited in the StoryMap.
                 </p>
                 <a
                   class="study-link"
@@ -592,15 +479,11 @@
                 <details class="study-notes">
                   <summary>Cartographic methods</summary>
                   <p>
-                    I applied cubic resampling and Jenks classification for a mapped
-                    presentation.
+                    I applied cubic resampling and Jenks classification for display.
+                    August 2017 monthly totals include rainfall outside Hurricane Harvey;
+                    resampling changes presentation, not measurement resolution.
                   </p>
                 </details>
-                <p class="scope-note">
-                  The analysis uses August 2017 monthly precipitation, so it includes
-                  rainfall beyond Hurricane Harvey. Cubic resampling changes
-                  presentation, not measurement resolution.
-                </p>
               </article>
               <article class="study" data-reveal>
                 <div class="study-meta">
@@ -627,8 +510,8 @@
                   </p>
                 </details>
                 <p class="scope-note">
-                  This is a descriptive comparison, not a predictive model. Slope,
-                  topography, wind exposure, and fuel moisture were outside its scope.
+                  These are descriptive overlays; terrain, wind exposure and fuel
+                  moisture were not modeled.
                 </p>
               </article>
               <article class="study study-compact" data-reveal>
