@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An offline rainfall explorer: dated accumulation windows, explicit reference choices and inspectable missing-data assumptions.">
+  <meta name="description" content="A reproducible NOAA precipitation explorer and data-quality work sample with transparent comparisons and completeness rules.">
   <meta name="theme-color" content="#f2f0e9">
-  <title>Rainfall, in context — case study</title>
+  <title>Precipitation, in context — case study</title>
   <link rel="stylesheet" href="../../styles.css">
   <style>
     .case-header{position:sticky;top:0}
@@ -35,26 +35,26 @@
   </div>
 </header>
 <main class="shell case-main" id="main-content">
-  <p class="eyebrow">Geospatial analysis · Offline software</p>
-  <h1>Rainfall, in context</h1>
-  <p class="case-lead">Making the dates and assumptions behind a rainfall comparison visible.</p>
-  <p>This work sample turns a frozen NOAA station extract into an interactive explorer. Two panels compare accumulation windows against explicitly selected reference members. Charts, numerical tables and expandable details expose the dates, totals and completeness behind each result.</p>
+  <p class="eyebrow">Data visualization · Offline software</p>
+  <h1>Precipitation, in context</h1>
+  <p class="case-lead">Making the dates and assumptions behind a precipitation comparison visible.</p>
+  <p>This software and data-quality work sample turns a frozen NOAA PRCP station extract into an interactive explorer. Two panels compare accumulation windows against explicitly selected reference members. Charts, numerical tables and expandable details expose the dates, totals and completeness behind each result.</p>
   <div class="case-actions"><a href="./">Open the explorer →</a><a href="#source">Inspect source and inputs ↓</a></div>
 
   <h2 id="methods">Different dates can change the comparison.</h2>
-  <p>The opening view contrasts October–December 2024 with calendar 2024. The quarter totals 0.16 inches against a 5.414-inch mean for those quarters in 2019–2023, while the year totals 19.13 inches against a 16.45-inch mean for those years. Different accumulated dates explain their opposing directions. These are totals over different lengths, not rainfall rates.</p>
-  <p>Every requested target and reference member must be complete. The explorer retains all 20 declared choices, including one unavailable result. The two-year reference ending in 2019 needs January–June 2018, before this extract begins. Its selected mean remains unavailable; the four complete members do not silently replace the requested five. Choosing the existing 2020–2023 option changes the reference set rather than reconstructing absent rainfall.</p>
-  <p>The underlying extract has no internal date gaps or blank precipitation values. Reported zeros, including trace zeros, remain observations. Dates outside this extract are not demonstrated gaps in NOAA’s wider archive. A high coverage fraction cannot supply an unknown rainfall amount.</p>
-  <details><summary>Calculation choices</summary><p>All target windows end in December 2024. Reference years identify window endpoints: a 24-month member ending in 2023 spans January 2022–December 2023. The app converts inches to millimetres using 25.4 millimetres per inch without adding measurement precision. It uses a shared, zero-based scale for the two absolute-total charts. An incomplete requested reference makes its full mean and percentage unavailable; a zero denominator would make the percentage undefined.</p><p>The app embeds its frozen data and calculation logic. It needs no live data request, external library, account or model service. Inspectable build sources and selected input files accompany the export.</p></details>
+  <p>The opening view contrasts October–December 2024 with calendar 2024. The quarter totals 0.16 inches against a 5.414-inch mean for those quarters in 2019–2023, while the year totals 19.13 inches against a 16.45-inch mean for those years. Different accumulated dates answer different questions and explain their opposing directions; this is expected comparison arithmetic. These are totals over different lengths, not precipitation rates.</p>
+  <p>For this app’s exact-sum reporting policy, every requested target and reference member must be complete. The explorer retains all 20 declared choices, including one unavailable result. The two-year reference ending in 2019 needs January–June 2018, before this extract begins. Its selected mean remains unavailable; the four complete members do not silently replace the requested five. Choosing the existing 2020–2023 option changes the reference set rather than reconstructing absent precipitation.</p>
+  <p>The underlying extract has no internal date gaps or blank precipitation values. Reported zeros, including trace zeros, remain observations. Dates outside this extract are not demonstrated gaps in NOAA’s wider archive. A high coverage fraction cannot supply an unknown precipitation amount.</p>
+  <details><summary>Calculation choices</summary><p>PRCP is total precipitation, including the liquid-water equivalent of frozen precipitation. It is not a rain-only measure. Different reference means answer different relative questions; changing a label does not establish statistical significance.</p><p>All target windows end in December 2024. Reference years identify window endpoints: a 24-month member ending in 2023 spans January 2022–December 2023. The app converts inches to millimetres using 25.4 millimetres per inch without adding measurement precision. It uses a shared, zero-based scale for the two absolute-total charts. An incomplete requested reference makes its full mean and percentage unavailable; a zero denominator would make the percentage undefined.</p><p>The app embeds its frozen data and calculation logic. It needs no live data request, external library, account or model service. Inspectable build sources and selected input files accompany the export.</p></details>
 
   <h2 id="synthetic-masks">Missing is different from zero.</h2>
   <p>The explorer’s month-hiding control is a deliberately synthetic demonstration. A separate reproducible exercise withholds each of the 366 days of complete 2024 in turn. Every hypothetical copy retains more than 99% of annual dates, but its strict annual total remains unavailable.</p>
-  <p>Incorrectly replacing the withheld amount with zero reverses the annual comparison in two of those synthetic masks: the copies hiding February 4 or February 5. The complete known year is above the selected reference. These deterministic counterexamples concern an assumption about withheld observations; they are not observed missingness, error probabilities, climatology or tested production behavior.</p>
-  <p>The masking analysis uses retained records and nonnegativity when discussing an unknown amount. It does not treat the hidden truth, known annual total or information from another mask as observed input. Its assumed fills never enter the app’s primary rainfall series.</p>
+  <p>Zero filling assumes the withheld amount is numeric zero. In this complete LA year, the 19.13-inch total exceeds the 16.45-inch selected mean by 2.68 inches. Removing an amount larger than that margin reverses the label: the February 4 and February 5 masks illustrate this condition. These are deterministic arithmetic examples, not evidence about real missingness or an imputation method’s reliability.</p>
+  <p>The masking analysis uses retained records and nonnegativity when discussing an unknown amount. It does not treat the hidden truth, known annual total or information from another mask as observed input. Its assumed fills never enter the app’s primary precipitation series.</p>
 
   <h2 id="validation">Rebuild and inspect the results</h2>
   <p>Frozen input hashes identify the snapshot used by the explorer. The accompanying source includes a dependency-free offline build and a standard-library script for reproducing the synthetic daily-mask analysis.</p>
-  <details><summary>Scope of the analysis</summary><p>Short selected references are not climate normals, and overlapping windows share observations. Station continuity, homogenization and the May 2024 handoff remain unresolved. Provider dates alone do not establish UTC intervals when observation-time fields are blank.</p><p>The results describe accumulation windows and constructed missing-data cases for this station extract. They do not estimate climate trends, forecasts or wildfire causes.</p></details>
+  <details><summary>Scope of the analysis</summary><p>The masking direction follows the starting margin and the omitted amount. If a complete total already lies below a fixed reference, subtracting a nonnegative daily amount cannot make it above: zero sign reversals are then algebraically guaranteed, not an informative robustness test. Requiring a complete total is a reporting policy, not validation of an optimal missing-data method.</p><p>Short selected references are not climate normals, and overlapping windows share observations. Station continuity, homogenization and the May 2024 handoff remain unresolved. Provider dates alone do not establish UTC intervals when observation-time fields are blank.</p><p>The results describe accumulation windows and constructed missing-data cases for this station extract. They do not estimate climate trends, forecasts or wildfire causes.</p></details>
 
   <h2 id="source">Source, inputs and attribution</h2>
   <p>Menne et al. (2012), GHCN-Daily Version 3, NOAA NCDC, <a href="https://doi.org/10.7289/V5D21VHZ">dataset DOI</a>; PRCP / USW00093134 / 2018-07-01–2024-12-31; accessed 21 October 2026. <a href="https://doi.org/10.1175/JTECH-D-11-00103.1">Dataset overview</a>. Independent analytical work, not an official NOAA product or endorsement.</p>
@@ -67,6 +67,7 @@
     <li><a href="data/noaa-daily-current.csv">Frozen NOAA daily observations</a> and <a href="analysis/single-day-census/analyze_single_day_census.py">synthetic daily-mask analysis source</a></li>
     <li><a href="analysis/single-day-census/results.json">Recorded synthetic daily-mask results</a></li>
   </ul>
+  <p><a href="CORRECTIONS_2026-10-24.txt">Terminology and interpretation corrected 24 October 2026</a>; the frozen observations and recorded numerical results remain unchanged.</p>
   <p>No additional license for the original code, charts or prose is granted by this export. Source-data citations and terms remain separate.</p>
 </main>
 <footer class="shell case-footer"><a href="../../#contributions">← Back to selected work</a></footer>

@@ -65,7 +65,7 @@
       : `A and B are ${a.direction === b.direction ? `both ${a.direction}` : `${a.direction} and ${b.direction}`} their selected means. These are dependent descriptive comparisons from one short record.`;
     if (announce) {
       const status = (c, side) => `Comparison ${side}: ${c.count} months, ${c.reference}, ${pct(c.percent)}.${c.eligible ? '' : ` ${c.complete} of ${c.requested} requested reference windows complete; required months are outside this extract. Full selected mean withheld.`}`;
-      byId('announcement').textContent = `${status(a, 'A')} ${status(b, 'B')} Rainfall units ${unit}.`;
+      byId('announcement').textContent = `${status(a, 'A')} ${status(b, 'B')} Precipitation units ${unit}.`;
     }
   }
   function renderMonthly() {

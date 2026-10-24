@@ -142,7 +142,7 @@ def main():
             "strict_complete_month_coverage_percent": Decimal(11) * 100 / 12,
             "all_pass_99_percent_annual_numeric_screen": all(row["retained_numeric_days"] * 100 >= row["expected_annual_days"] * 99 for row in rows),
             "identification_counts": dict(identification),
-            "identification_information_set": "Retained rainfall values and nonnegativity only; deliberately excludes the known hidden value, known complete total, mask-selection metadata and cross-mask reconstruction",
+            "identification_information_set": "Retained precipitation values and nonnegativity only; deliberately excludes the known hidden value, known complete total, mask-selection metadata and cross-mask reconstruction",
             "finite_upper_bound_from_that_information": None,
             "old_suites_or_twelve_monthly_masks_rerun": False,
             "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
@@ -194,13 +194,13 @@ These counts do not establish representative imputation error, a missingness
 model, empirical robustness, or the chance that a real missing day changes a sign.
 
 For identification, consider each mask separately using ONLY its retained values
-and nonnegative rainfall. Exclude the hidden truth, known full-year total,
+and nonnegative precipitation. Exclude the hidden truth, known full-year total,
 selection metadata and reconstruction from other masks. In {identification['above']} masks, the
 partial alone exceeds the reference, so "above" is identified even though the
 exact total is not. In the two crossing masks, below/equal/above remain possible:
 an unknown {crossing[0]['additional_nonnegative_amount_for_equality_in']} in or {crossing[1]['additional_nonnegative_amount_for_equality_in']} in, respectively, would equal the reference.
 Each retained partial is a lower bound; these inputs supply no finite upper bound.
-This is a conditional mathematical statement, not a physical rainfall estimate.
+This is a conditional mathematical statement, not a physical precipitation estimate.
 
 METHOD / REPRODUCTION
 Run using existing Python 3 from the export root:

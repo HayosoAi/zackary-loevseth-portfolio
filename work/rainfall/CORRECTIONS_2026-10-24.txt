@@ -1,0 +1,35 @@
+PRECIPITATION EXPLORER — DATED TERMINOLOGY AND INTERPRETATION CORRECTION
+24 October 2026
+
+This is a reproducible NOAA precipitation explorer and data-quality/software
+work sample, not a scientific discovery or independent climate validation.
+
+PRCP denotes total precipitation, including the liquid-water equivalent of
+frozen precipitation. Current rain/rainfall labels referring to PRCP were changed
+to precipitation. Historical URLs and the internal Rainfall namespace remain
+for compatibility. Raw observations, frozen results and historical provenance
+records were preserved; prior wording remains in Git history.
+
+Changing the dates changes the accumulated quantity. Changing a reference mean
+changes the relative question and percentage by ordinary arithmetic. The selected
+2–5-window means are not climate normals, and a changed label does not establish
+statistical significance. The exact-sum completeness rule is a reporting policy.
+
+The synthetic daily examples are conditional arithmetic. For complete total T,
+fixed reference mean M and omitted nonnegative amount x, zero fill gives T−x.
+If T<M, then T−x<M: zero sign reversals are guaranteed, not an informative test
+of robustness or a meaningful failure to replicate reversal risk. If T>M, an
+above-to-below reversal requires x>T−M. The published LA examples illustrate
+that latter condition; they do not estimate real missingness probabilities.
+
+Legitimate work retained: inspectable dates/reference membership, source hashes,
+reproducible calculations/builds, explicit unavailable states, numerical chart
+alternatives and keyboard/responsive interface work. These software checks do
+not establish physical measurement accuracy or climate interpretation. Physical
+station-history continuity and homogenization remain unresolved; this is one
+station extract with short dependent reference contrasts.
+
+Official variable/field documentation:
+https://www.ncei.noaa.gov/pub/data/cdo/documentation/GHCND_documentation.pdf
+NOAA-hosted GHCN quality-assurance paper (liquid-equivalent PRCP):
+https://www.ncei.noaa.gov/pub/data/ghcn/daily/papers/durre-menne-etal2010.pdf

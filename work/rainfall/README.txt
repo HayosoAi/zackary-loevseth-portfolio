@@ -1,4 +1,9 @@
-RAINFALL, IN CONTEXT — PORTABLE SOURCE EXPORT
+PRECIPITATION, IN CONTEXT — PORTABLE SOURCE EXPORT
+
+A reproducible NOAA PRCP explorer and data-quality work sample. PRCP includes
+the liquid-water equivalent of frozen precipitation; it is not rain-only.
+Terminology and interpretation corrected 24 October 2026; see
+CORRECTIONS_2026-10-24.txt. The existing URL path is retained for stable links.
 
 BUILD THE APP
 Use an existing Python 3.9 or newer. No dependency installation or retrieval is needed.
@@ -19,8 +24,10 @@ INSPECT THE SOURCE
   data/noaa-daily-current.csv   Frozen daily NOAA subset for the census reproduction
   data/INPUTS.json              Exact input hashes and data citation
   case-study.html               Case study and methods
-The engine, UI logic, styles and three frozen data files are unchanged byte copies.
-Only the template's export labels and links were adapted for this selected export.
+The calculation engine, styles and three frozen data files remain unchanged.
+The current interface terminology and explanatory text were corrected on
+24 October 2026 without changing calculations. The legacy internal Rainfall
+namespace is retained for compatibility; it does not define PRCP as rain-only.
 
 REPRODUCE THE SYNTHETIC DAILY-MASK CENSUS
 From this folder, choose a fresh output directory:
@@ -37,6 +44,10 @@ to the original recorded script. The portable script changes input/output paths 
 generated reproduction instructions, not the calculation. A fresh result records
 the portable script's own hash. These provenance hashes may therefore differ;
 compare numerical fields and scope separately from script/path metadata.
+
+Changing the baseline changes the relative comparison by ordinary arithmetic;
+these short selected means do not establish scientific significance. The strict
+completeness requirement is this app's exact-sum reporting policy.
 
 The census withholds each known 2024 day separately. These are hypothetical masks,
 not observed missingness, missingness probabilities or a recommended imputation.

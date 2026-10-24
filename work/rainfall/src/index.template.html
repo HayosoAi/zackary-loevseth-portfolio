@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
-  <meta name="description" content="Offline work sample exploring how fixed rainfall windows and short selected references change descriptive comparisons.">
-  <title>Rainfall, in context · offline work sample</title>
+  <meta name="description" content="Reproducible NOAA precipitation explorer and data-quality work sample with dated totals, selected reference means and explicit completeness rules.">
+  <title>Precipitation, in context · offline work sample</title>
   <style>/*__STYLES__*/</style>
 </head>
 <body>
@@ -13,20 +13,20 @@
 <header class="masthead">
   <div class="wrap">
     <p class="eyebrow">Work sample <span aria-hidden="true">/</span> NOAA observations <span aria-hidden="true">/</span> Offline</p>
-    <h1>Rainfall, in context.</h1>
-    <p class="dek">One record can describe a dry quarter and a wet year. Explore how the window and the selected reference change the comparison.</p>
+    <h1>Precipitation, in context.</h1>
+    <p class="dek">Inspect dated NOAA precipitation totals, selected reference means and completeness rules. Changing the reference changes the relative comparison by ordinary arithmetic.</p>
     <p class="meta">USW00093134 · July 2018–December 2024 · frozen observations · accessed 21 October 2026</p>
   </div>
 </header>
 <main class="wrap">
   <aside class="warning" aria-labelledby="limits-title">
     <strong id="limits-title">Short references are not climate normals.</strong>
-    <p>These are selected means of 2–5 windows from one NOAA station identifier. Station continuity after the May 2024 metadata change and station homogenization remain unresolved. Every target includes post-change dates. No causal wildfire inference or prediction follows.</p>
+    <p>These means cover 2–5 windows. Physical station continuity after the May 2024 metadata change and homogenization remain unresolved; see the <a href="#methods-title">methods</a>.</p>
   </aside>
   <noscript><p class="warning">JavaScript is required for the controls and charts. Frozen results remain available in <a href="data/frozen-comparisons.csv">the comparison CSV</a> and the <a href="case-study.html#methods">methods and completeness rule</a>.</p></noscript>
   <section aria-labelledby="compare-title" id="controls">
     <div class="section-head"><div><p class="eyebrow">01 / Compare two choices</p><h2 id="compare-title">Keep the dates in view.</h2></div>
-      <div class="global-controls"><label for="units">Rainfall units<select id="units"><option value="in">Inches (in)</option><option value="mm">Millimetres (mm)</option></select></label><button id="reset" type="button">Reset demo</button></div></div>
+      <div class="global-controls"><label for="units">Precipitation units<select id="units"><option value="in">Inches (in)</option><option value="mm">Millimetres (mm)</option></select></label><button id="reset" type="button">Reset demo</button></div></div>
     <p>All targets end 31 December 2024. Reference years identify <strong>window endpoints</strong>; each member uses the same calendar months as its target. A reference mean averages complete window totals, not monthly rates.</p>
     <p class="caption">On narrow screens, scroll charts and tables horizontally. Keyboard: Tab to the region, then use Left/Right.</p>
     <div class="comparisons">
@@ -47,7 +47,7 @@
     </div>
     <p id="comparison-note" class="note"></p>
     <p id="announcement" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></p>
-    <p class="caption">The two total charts share a zero origin and the same absolute scale, including the selected reference-member totals in that scale. Longer accumulations cover more time; these bars are totals, not rainfall rates. “Above” and “below” are descriptive directions, not performance scores. Totals display 2 decimals in inches or 3 in mm; means and scaled assumptions display 4; percentages display 6. Rounding and converted digits add no measurement precision.</p>
+    <p class="caption">The two total charts share a zero origin and the same absolute scale, including the selected reference-member totals in that scale. Longer accumulations cover more time; these bars are totals, not precipitation rates. “Above” and “below” are descriptive directions, not performance scores. Totals display 2 decimals in inches or 3 in mm; means and scaled assumptions display 4; percentages display 6. Rounding and converted digits add no measurement precision.</p>
   </section>
   <section aria-labelledby="grid-title">
     <div class="section-head"><div><p class="eyebrow">02 / Inspect the fixed design</p><h2 id="grid-title">Twenty declared comparisons.</h2></div></div>
@@ -57,24 +57,24 @@
     <details><summary>View all comparison totals</summary><div id="all-results" class="table-wrap" role="region" aria-label="All comparison totals; scroll horizontally if needed" tabindex="0"></div></details>
   </section>
   <section aria-labelledby="monthly-title">
-    <p class="eyebrow">03 / See the accumulation</p><h2 id="monthly-title">A year with rainfall concentrated in February.</h2>
-    <p id="monthly-intro"></p><p class="caption">On narrow screens, scroll the chart horizontally or open the values table below.</p><div id="monthly-chart" class="monthly-chart" role="region" aria-label="Monthly rainfall chart; scroll horizontally on narrow screens or use the data table" tabindex="0"></div>
+    <p class="eyebrow">03 / See the accumulation</p><h2 id="monthly-title">A year with precipitation concentrated in February.</h2>
+    <p id="monthly-intro"></p><p class="caption">On narrow screens, scroll the chart horizontally or open the values table below.</p><div id="monthly-chart" class="monthly-chart" role="region" aria-label="Monthly precipitation chart; scroll horizontally on narrow screens or use the data table" tabindex="0"></div>
     <details><summary>View 2024 monthly values and trace counts</summary><div id="monthly-table" class="table-wrap" role="region" aria-label="Monthly values and trace counts; scroll horizontally if needed" tabindex="0"></div></details>
   </section>
   <section aria-labelledby="missing-title" class="synthetic">
     <div class="section-head"><div><p class="eyebrow">04 / Synthetic demonstration</p><h2 id="missing-title">What if one month were unknown?</h2></div><label for="mask-month">Hide one known 2024 month<select id="mask-month"></select></label></div>
     <p><strong>Every date from 1 July 2018 through 31 December 2024 is present with a PRCP value in the frozen CSV.</strong> This synthetic demonstration hides one known month at a time. It does not alter the observations or the primary comparisons above. The reference is fixed to the 2019–2023 calendar-year mean.</p>
     <div id="mask-result"></div>
-    <p class="caption">Strict completeness withholds the full total. Zero fill assumes the missing month had zero rain. Scaling multiplies the observed 11-month sum by 12/11 and assumes exchangeable months despite seasonality. Neither replacement is adopted as an imputation.</p>
+    <p class="caption">Strict completeness withholds the full total. Zero fill assumes the missing month’s precipitation amount was numeric zero. Scaling multiplies the observed 11-month sum by 12/11 and assumes exchangeable months despite seasonality. Neither replacement is adopted as an imputation.</p>
     <details><summary>Inspect all 12 synthetic masks</summary><div id="masks-table" class="table-wrap" role="region" aria-label="Synthetic mask values; scroll horizontally if needed" tabindex="0"></div></details>
   </section>
   <section aria-labelledby="methods-title">
     <p class="eyebrow">05 / Evidence and boundaries</p><h2 id="methods-title">Reproducible arithmetic. Limited inference.</h2>
     <div class="method-grid">
-      <div><h3>Observation and missingness rules</h3><p>2,376 unique contiguous daily dates form 78 complete calendar months. There are no missing PRCP values and no nonblank quality flags in this frozen input; all source flags are W. The 58 trace flags are retained: numeric 0.00 inches at the supplied precision does not mean physical zero rainfall.</p><p>Provider calendar-date keys are used as supplied, with leap days retained. Observation-time attributes are blank; a UTC interval or daily reporting cutoff is not inferred. Daily amounts are summed at hundredth-inch precision. Inches × 25.4 converts units without adding measurement precision.</p></div>
-      <div><h3>Fixed-reference rule</h3><p>A requested target or reference window must contain every calendar month. If any requested reference member is incomplete, its entire selected reference mean and percentage are unavailable. No endpoint is dropped. A zero reference denominator would make the percentage undefined.</p><p>The 24-month reference with endpoints 2019–2023 requires January–June 2018, outside this extract. Its endpoint-2019 member has 18 of 24 months; the other four complete members do not replace it. The existing 2020–2023 option uses four complete reference windows. Selecting it changes the reference set; it does not fill the months outside the extract.</p><p>The local coverage check found no date gaps or blank PRCP values within the extract. Reported zeros, including 58 trace values, are observations. A coverage cutoff cannot supply absent rainfall amounts. See the <a href="case-study.html#methods">methods and completeness rule</a> and <a href="case-study.html#synthetic-masks">two synthetic daily counterexamples</a>.</p></div>
+      <div><h3>Observation and missingness rules</h3><p>PRCP is total precipitation, including the liquid-water equivalent of frozen precipitation; it is not a rain-only measure.</p><p>2,376 unique contiguous daily dates form 78 complete calendar months. There are no missing PRCP values and no nonblank quality flags in this frozen input; all source flags are W. The 58 trace flags are retained: numeric 0.00 inches at the supplied precision does not mean physical zero precipitation.</p><p>Provider calendar-date keys are used as supplied, with leap days retained. Observation-time attributes are blank; a UTC interval or daily reporting cutoff is not inferred. Daily amounts are summed at hundredth-inch precision. Inches × 25.4 converts units without adding measurement precision.</p></div>
+      <div><h3>Fixed-reference rule</h3><p>For this app’s exact-sum reporting policy, a requested target or reference window must contain every calendar month. If any requested reference member is incomplete, its entire selected reference mean and percentage are unavailable. No endpoint is dropped. A zero reference denominator would make the percentage undefined.</p><p>The 24-month reference with endpoints 2019–2023 requires January–June 2018, outside this extract. Its endpoint-2019 member has 18 of 24 months; the other four complete members do not replace it. The existing 2020–2023 option uses four complete reference windows. Selecting it changes the reference set; it does not fill the months outside the extract.</p><p>The local coverage check found no date gaps or blank PRCP values within the extract. Reported zeros, including 58 trace values, are observations. A coverage cutoff cannot supply absent precipitation amounts. See the <a href="case-study.html#methods">methods and completeness rule</a> and <a href="case-study.html#synthetic-masks">two synthetic daily counterexamples</a>.</p></div>
       <div><h3>Station and scope limits</h3><p>Legacy NOAA HOMR remarks dated 20 May 2024 describe a move; formal records change 24 May. Neither establishes the exact observational handoff. The daily series retains USW00093134 and the old USC name while the metadata crosswalk remains unresolved. All selected targets include post-change observations.</p><p>NOAA’s station-practice biases are not homogenized. Matching numeric values and flags do not establish physical-site continuity. This point series does not represent a county or fire footprint and supports no fuel, ignition, climate-trend or causal/predictive wildfire conclusion.</p></div>
-      <div><h3>Inspect and reproduce the comparison</h3><p>The frozen NOAA extract, calculation source and build instructions make the selected dates, reference members and completeness rules inspectable. The offline build embeds the data, charts and controls in one page.</p></div>
+      <div><h3>Inspect and reproduce the comparison</h3><p>This is a software and data-visualization demonstration. The frozen NOAA extract, calculation source and build instructions make the selected dates, reference members and completeness rules inspectable. Different references answer different relative questions; a changed label does not establish scientific significance. The offline build embeds the data, charts and controls in one page.</p></div>
     </div>
     <details><summary>Data sources and reproducibility</summary>
       <div class="sources"><p><strong>This explorer uses a frozen NOAA-only snapshot accessed 21 October 2026.</strong> The app and portable build use local data. GHCN-Daily Version 3 identifies the cited collection; the accompanying hashes identify this snapshot.</p>
@@ -89,7 +89,7 @@
     </details>
   </section>
 </main>
-<footer class="wrap"><p>Offline analytical work sample · all app data and logic are embedded · no external libraries, remote requests, analytics or storage</p><p><a href="README.txt">Source and rebuild instructions</a> · <a href="case-study.html">Case study</a> · <a href="case-study.html#validation">Reproducibility and scope</a></p></footer>
+<footer class="wrap"><p>Offline analytical work sample · all app data and logic are embedded · no external libraries, remote requests, analytics or storage</p><p><a href="README.txt">Source and rebuild instructions</a> · <a href="CORRECTIONS_2026-10-24.txt">24 October 2026 correction note</a> · <a href="case-study.html">Case study</a> · <a href="case-study.html#validation">Reproducibility and scope</a></p></footer>
 <script id="frozen-data" type="application/json">/*__DATA__*/</script>
 <script>/*__ENGINE__*/</script>
 <script>/*__APP__*/</script>
